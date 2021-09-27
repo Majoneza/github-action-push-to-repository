@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash
 
 SOURCE_DIRECTORY=$1
 DESTINATION_GITHUB_USERNAME=$2
@@ -21,7 +21,7 @@ fi
 
 echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_rsa
 
-cd "~/workspace/$SOURCE_DIRECTORY"
+cd "~/temp-workspace/$SOURCE_DIRECTORY"
 
 git add .
 
