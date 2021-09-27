@@ -5,7 +5,7 @@ RUN apk update
 RUN apk add --no-cache git
 RUN apk add --no-cache bash
 
-COPY $GITHUB_WORKSPACE ~/temp-workspace
+COPY $GITHUB_WORKSPACE /temp-workspace
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
