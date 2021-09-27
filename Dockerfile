@@ -2,8 +2,10 @@
 FROM alpine:3.10
 
 RUN apk update
-RUN apk add --no-cache git
-RUN apk add --no-cache bash
+RUN apk add --no-cache \
+    git \
+    bash \
+    openssh-client
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
