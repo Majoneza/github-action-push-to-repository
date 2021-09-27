@@ -1,8 +1,8 @@
 # github-action-push-to-repository
 
-This action pushes the repository from $GITHUB_WORKSPACE
+This action pushes the repository from $GITHUB_WORKSPACE.
 
-inspired by "cpina/github-action-push-to-another-repository" to fit the required functionality
+Inspired by "cpina/github-action-push-to-another-repository" to fit the required functionality.
 
 ## Inputs
 
@@ -28,11 +28,11 @@ Branch on the destination github repository. Default `main`.
 
 ### `user-name`
 
-Commit user name. If omitted `destination-github-username` will be used
+Commit user name. If omitted `destination-github-username` will be used.
 
 ### `commit-message`
 
-Message for the commit
+Message for the commit.
 
 ## Example usage
 ```
