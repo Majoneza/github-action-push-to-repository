@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -u
+
 SOURCE_DIRECTORY=$1
 DESTINATION_GITHUB_USERNAME=$2
 DESTINATION_REPOSITORY_NAME=$3
@@ -8,7 +11,7 @@ USER_EMAIL=$5
 USER_NAME=$6
 COMMIT_MESSAGE=$7
 
-if [[ -z $COMMIT_USER_NAME ]]; then
+if [[ -z $USER_NAME ]]; then
     USER_NAME=$DESTINATION_GITHUB_USERNAME
 fi
 
@@ -29,6 +32,6 @@ git status
 
 git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
 
-git push "git@github.com:$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" "HEAD":"$TARGET_BRANCH"
+git push "git@github.com:$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" HEAD:"$TARGET_BRANCH"
 
 rm ~/.ssh/id_rsa
