@@ -8,12 +8,18 @@ USER_EMAIL=$5
 USER_NAME=$6
 COMMIT_MESSAGE=$7
 
-if [ -z $COMMIT_USER_NAME ]; then
+if [[ -z $COMMIT_USER_NAME ]]; then
     USER_NAME=$DESTINATION_GITHUB_USERNAME
 fi
 
 git config --global user.email "$USER_EMAIL"
 git config --global user.name "$USER_NAME"
+
+if [[ ! -d ~/.ssh ]]; then
+    mkdir ~/.ssh
+fi
+
+echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_rsa
 
 cd "$GITHUB_WORKSPACE/$SOURCE_DIRECTORY"
 
@@ -23,4 +29,6 @@ git status
 
 git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
 
-git push "$USER_NAME:$API_GITHUB_TOKEN@github.com/$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" "HEAD" "$TARGET_BRANCH"
+git push "git@github.com:$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" "HEAD":"$TARGET_BRANCH"
+
+rm ~/.ssh/id_rsa

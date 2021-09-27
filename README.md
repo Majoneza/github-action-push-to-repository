@@ -1,6 +1,8 @@
 # github-action-push-to-repository
 
-This action pushes the repository from $GITHUB_WORKSPACE.
+This action pushes the repository from $GITHUB_WORKSPACE using the deploy key of the target repository.
+
+The deploy key should be setup as an environmental variable named `REPOSITORY_DEPLOY_KEY`.
 
 Inspired by "cpina/github-action-push-to-another-repository" to fit the required functionality.
 
