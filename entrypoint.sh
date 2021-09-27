@@ -24,6 +24,12 @@ fi
 
 echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_rsa
 
+echo "Host github.com
+HostName github.com
+IdentityFile ~/.ssh/id_rsa" > ~/.ssh/config
+
+chmod 600 ~/.ssh/config
+
 cd /github/workspace
 
 git init
