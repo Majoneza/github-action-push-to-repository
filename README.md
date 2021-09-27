@@ -36,7 +36,9 @@ Message for the commit
 
 ## Example usage
 ```
-uses: Majoneza/github-action-wrap-in-express@v1
+uses: Majoneza/github-action-push-to-repository@v1
 with:
-  default-port: 10000
+  destination-github-username: Majoneza
+  destination-repository-name: github-action-push-to-repository
+  user-email: majoneza@email.com
 ```
