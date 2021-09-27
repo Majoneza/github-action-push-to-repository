@@ -1,0 +1,38 @@
+# action.yml
+name: 'Push to repository'
+description: 'Push to repository of choice from GITHUB_WORKSPACE'
+inputs:
+  source-directory:
+    description: 'Source repository directory'
+    required: true
+    default: './'
+  destination-github-username:
+    description: 'Destination github user name'
+    required: true
+  destination-repository-name:
+    description: 'Destination github repository name'
+    required: true
+  destination-target-branch:
+    description: 'Destination repository branch name used for the commit'
+    required: true
+    default: 'main'
+  user-email:
+    description: 'User email used for the commit'
+    required: true
+  user-name:
+    description: 'User name used for the commit'
+    required: false
+  commit-message:
+    description: 'Destination repository commit message'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.source-directory }}
+    - ${{ inputs.destination-github-username }}
+    - ${{ inputs.destination-repository-name }}
+    - ${{ inputs.destination-target-branch }}
+    - ${{ inputs.user-email }}
+    - ${{ inputs.user-name }}
+    - ${{ inputs.commit-message }}
