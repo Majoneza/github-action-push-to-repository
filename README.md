@@ -10,7 +10,7 @@ Inspired by "cpina/github-action-push-to-another-repository" to fit the required
 
 ### `source-directory`
 
-Path from the root of the app repository. Default `"./"`.
+Path from the root of the repository. Default `"./"`.
 
 ### `destination-github-username`
 
