@@ -26,6 +26,8 @@ echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_rsa
 
 cd /temp-workspace/$SOURCE_DIRECTORY
 
+git init
+
 git add .
 
 git status
