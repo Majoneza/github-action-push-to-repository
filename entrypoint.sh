@@ -24,7 +24,7 @@ fi
 
 echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_rsa
 
-cd /temp-workspace/$SOURCE_DIRECTORY
+cd /github/workspace
 
 git init
 
