@@ -32,7 +32,7 @@ git add .
 
 git status
 
-git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
+git diff-index --quiet HEAD || git commit -a --allow-empty-message --message "$COMMIT_MESSAGE"
 
 git push "git@github.com:$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" HEAD:"$TARGET_BRANCH"
 
