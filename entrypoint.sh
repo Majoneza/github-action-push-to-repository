@@ -21,7 +21,7 @@ fi
 
 echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_rsa
 
-cd "workspace/$SOURCE_DIRECTORY"
+cd "~/workspace/$SOURCE_DIRECTORY"
 
 git add .
 
