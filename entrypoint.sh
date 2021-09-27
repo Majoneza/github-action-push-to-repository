@@ -34,8 +34,6 @@ git status
 
 git diff-index --quiet HEAD || git commit -a --allow-empty-message --message "$COMMIT_MESSAGE"
 
-echo "$GITHUB_WORKSPACE"
-
 #git push "git@github.com:$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" HEAD:"$DESTINATION_TARGET_BRANCH"
 
 rm ~/.ssh/id_rsa
