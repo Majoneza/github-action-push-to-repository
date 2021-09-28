@@ -26,7 +26,9 @@ echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_rsa_github
 
 chmod 600 ~/.ssh/id_rsa_github
 
-GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_github'
+$ eval "$(ssh-agent -s)"
+
+ssh-add ~/.ssh/id_rsa_github
 
 cd /github/workspace
 
