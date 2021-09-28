@@ -22,13 +22,13 @@ if [ ! -d ~/.ssh ]; then
     mkdir ~/.ssh
 fi
 
-echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_rsa_github
+echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_github_token
 
-chmod 600 ~/.ssh/id_rsa_github
+chmod 600 ~/.ssh/id_github_token
 
 eval `ssh-agent -s`
 
-ssh-add ~/.ssh/id_rsa_github
+ssh-add ~/.ssh/id_github_token
 
 cd /github/workspace
 
@@ -36,14 +36,20 @@ if [ -e ./.git ]; then
     rm -rf ./.git
 fi
 
+if [ -e ./.github ]; then
+    rm -rf ./.github
+fi
+
 git init
 
-git add .
+git config core.sshCommand "ssh -i ~/.ssh/id_github_token"
+
+git add -A
 
 git status
 
-git diff-index --quiet HEAD || git commit -a --allow-empty-message --message "$COMMIT_MESSAGE"
+git commit -a --allow-empty-message --message "$COMMIT_MESSAGE"
 
-git push "git@github.com:$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" HEAD:"$DESTINATION_TARGET_BRANCH"
+git push --force "git@github.com:$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" HEAD:"$DESTINATION_TARGET_BRANCH"
 
-rm ~/.ssh/id_rsa_github
+rm ~/.ssh/id_github_token
