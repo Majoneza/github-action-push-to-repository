@@ -28,7 +28,10 @@ chmod 600 ~/.ssh/id_github_token
 
 eval `ssh-agent -s`
 
-ssh-add ~/.ssh/id_github_token
+echo "Host bitbucket.org" >> ~/.ssh/config
+echo " IdentityFile ~/.ssh/id_github_token" >> ~/.ssh/config
+
+# ssh-add ~/.ssh/id_github_token
 
 cd /github/workspace
 
@@ -42,7 +45,7 @@ fi
 
 git init
 
-git config core.sshCommand "ssh -i ~/.ssh/id_github_token"
+git config core.sshCommand "ssh -oStrictHostKeyChecking=no -i ~/.ssh/id_github_token"
 
 git add -A
 
