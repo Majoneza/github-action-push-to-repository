@@ -34,6 +34,12 @@ ssh-add ~/.ssh/id_rsa
 
 cd /github/workspace
 
+if [ -e ./.git ]; then
+    rm -rf ./.git
+fi
+
+git init
+
 git add .
 
 git status
