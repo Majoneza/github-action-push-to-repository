@@ -24,6 +24,8 @@ fi
 
 echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_rsa
 
+eval `ssh-agent -s`
+
 ssh-add ~/.ssh/id_rsa
 
 cd /github/workspace
