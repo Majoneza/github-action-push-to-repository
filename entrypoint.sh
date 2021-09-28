@@ -22,15 +22,11 @@ if [ ! -d ~/.ssh ]; then
     mkdir ~/.ssh
 fi
 
-echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_rsa
+echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_rsa_github
 
-chmod 600 ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa_github
 
-eval `ssh-agent -s`
-
-ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-
-ssh-add ~/.ssh/id_rsa
+GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_github'
 
 cd /github/workspace
 
@@ -48,4 +44,4 @@ git diff-index --quiet HEAD || git commit -a --allow-empty-message --message "$C
 
 git push "git@github.com:$DESTINATION_GITHUB_USERNAME/$DESTINATION_REPOSITORY_NAME.git" HEAD:"$DESTINATION_TARGET_BRANCH"
 
-rm ~/.ssh/id_rsa
+rm ~/.ssh/id_rsa_github
