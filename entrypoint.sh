@@ -26,14 +26,9 @@ echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_github_token
 
 chmod 600 ~/.ssh/id_github_token
 
-#eval `ssh-agent -s`
-
-#echo "Host bitbucket.org" >> ~/.ssh/config
-#echo " IdentityFile ~/.ssh/id_github_token" >> ~/.ssh/config
-
-# ssh-add ~/.ssh/id_github_token
-
 cd /github/workspace
+
+ls -al
 
 if [ -e ./.git ]; then
     rm -rf ./.git
