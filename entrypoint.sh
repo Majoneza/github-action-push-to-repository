@@ -28,8 +28,6 @@ chmod 600 ~/.ssh/id_github_token
 
 cd /github/workspace
 
-ls -al
-
 if [ -e ./.git ]; then
     rm -rf ./.git
 fi
@@ -38,11 +36,15 @@ if [ -e ./.github ]; then
     rm -rf ./.github
 fi
 
+if [ -e ./.gitignore ]; then
+    rm ./.gitignore
+fi
+
 git init
 
 git config core.sshCommand "ssh -oStrictHostKeyChecking=no -i ~/.ssh/id_github_token"
 
-git add .
+git add -A
 
 git status
 
