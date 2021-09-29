@@ -26,10 +26,10 @@ echo "$REPOSITORY_DEPLOY_KEY" > ~/.ssh/id_github_token
 
 chmod 600 ~/.ssh/id_github_token
 
-eval `ssh-agent -s`
+#eval `ssh-agent -s`
 
-echo "Host bitbucket.org" >> ~/.ssh/config
-echo " IdentityFile ~/.ssh/id_github_token" >> ~/.ssh/config
+#echo "Host bitbucket.org" >> ~/.ssh/config
+#echo " IdentityFile ~/.ssh/id_github_token" >> ~/.ssh/config
 
 # ssh-add ~/.ssh/id_github_token
 
@@ -47,7 +47,7 @@ git init
 
 git config core.sshCommand "ssh -oStrictHostKeyChecking=no -i ~/.ssh/id_github_token"
 
-git add -A
+git add .
 
 git status
 
